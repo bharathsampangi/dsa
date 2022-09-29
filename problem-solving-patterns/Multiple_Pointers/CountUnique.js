@@ -10,4 +10,4 @@ const CountUnique = (array) => {
     return uniqueCount
 }
 
-console.log("count unique", CountUnique([1, 1, 1, 1, 1, 2]))
+console.log("count unique ", CountUnique([1, 1, 1, 1, 1, 2]))

@@ -15,4 +15,5 @@ const averagePair = (array, targetSum) => {
     return false
 }
 
+console.log("Hello")
 console.log("average pair", averagePair([-1, 0, 3, 4, 5, 6], 4))

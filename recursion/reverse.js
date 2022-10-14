@@ -1,13 +1,7 @@
-const reverseString = (string) => {
-    let reversedString = ''
-    const reverse = (string) => {
-        if(string.length == 0)
-            return reversedString
-        reversedString = reversedString.concat(string[string.length - 1])
-        reverse(string.slice(-string.length, -1))
-    }
-    reverse(string)
-    return reversedString
+const reverse = (string) => {
+    if(string.length <= 1)
+        return string
+    return string[string.length - 1] + reverse(string.slice(0, string.length - 1))
 }
 
-console.log("reverse", reverseString('awesome'))
+console.log("reverse", reverse('awesome'))

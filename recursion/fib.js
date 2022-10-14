@@ -8,4 +8,4 @@ const fibonacci = (num) => {
     return fibonacci(num-1) + fibonacci(num - 2)
 }
 
-console.log("fib", fibonacci(35))
+console.log("fib", fibonacci(4))

@@ -48,7 +48,20 @@ class SinglyLinkedList{
     }
 
     shift() {
-        
+        if(!this.head || !this.tail) 
+            return
+        if(this.head === this.tail) {
+            this.head = null
+            this.tail = null
+            this.length = 0
+            return
+        }
+        this.head = this.head.next
+        this.length--
+    }
+
+    unshift() {
+
     }
 }
 
@@ -58,6 +71,7 @@ singleList.push("How")
 
 console.log(singleList)
 
-singleList.pop()
+// singleList.pop()
+singleList.shift()
 
 console.log(singleList)

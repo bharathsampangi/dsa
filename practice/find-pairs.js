@@ -6,6 +6,25 @@
 // Time Complexity - O(n log n)
 // Space Complexity - O(1)
 
+const findPair = (arr, numsDiff) => {
+    numsDiff = Math.abs(numsDiff)
+    let map = {}
+
+    for(let i=0; i<arr.length; i++) {
+        let diff = Math.abs(numsDiff - arr[i])
+        if(diff === 0)
+            return true
+        
+        let remainingDiff = Math.abs(numsDiff - arr[i])
+        if(map[remainingDiff] || map[-remainingDiff]) {
+            return true
+        }
+        map[arr[i]] = 1
+    }
+
+    return false
+}
+
 console.log(findPair([6, 1, 4, 10, 2, 4], 2)); // true
 console.log(findPair([8, 6, 2, 4, 1, 0, 2, 5, 13], 1)); // true
 console.log(findPair([4, -2, 3, 10], -6)); // true

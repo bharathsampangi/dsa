@@ -4,6 +4,12 @@
 // This function should mimic the functionality of Math.pow().
 // Do not worry about negative bases and exponents.
 
+function power(n, m) {
+    if(m === 0)
+        return 1
+    return n * power(n, m-1)
+}
+
 console.log(power(2, 0)); // 1
 console.log(power(2, 2)); // 4
 console.log(power(2, 4)); // 16

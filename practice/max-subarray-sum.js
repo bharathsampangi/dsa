@@ -9,6 +9,26 @@
 // Time Complexity - O(N)
 // Space Complexity - O(1)
 
+const maxSubarraySum = (arr, nums) => {
+    let maxSum = -Infinity
+    let sum = 0
+    if(arr.length < nums) {
+        return null
+    }
+
+    for(let i=0; i < nums; i++) {
+        sum = sum + arr[i]
+    }
+    maxSum = Math.max(sum, maxSum)
+
+    for(let i=nums; i < arr.length; i++) {
+        sum = sum + arr[i] - arr[i - nums]
+        maxSum = Math.max(sum, maxSum)
+    }
+
+    return maxSum
+}
+
 console.log(maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4)); // 39
 console.log(maxSubarraySum([3, -2, 7, -4, 1, -1, 4, -2, 1], 2)); // 5
 console.log(maxSubarraySum([2, 3], 3)); // null

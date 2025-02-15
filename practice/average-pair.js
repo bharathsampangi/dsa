@@ -7,20 +7,35 @@
 // Time Complexity: O(N)
 // Space Complexity: O(1)
 
+// function averagePair(array, target) {
+//     if(!array.length)
+//         return false
+//     if(array.length == 1)
+//         return target == array[0]
+//     let auxSum = array[0] + array[1]
+//     if(auxSum === target)
+//         return true
+
+//     for(let i=2; i < array.length; i++) {
+//         auxSum = auxSum + array[i] - array[i - 2]
+//         if(target == auxSum)
+//             return true
+//     }
+
+//     return false
+// }
+
 function averagePair(array, target) {
-    if(!array.length)
-        return false
-    if(array.length == 1)
-        return target == array[0]
+    if(!array.length) return false
 
-    let auxSum = array[0] + array[1]
-    if(auxSum === target)
-        return true
+    let left = 0;
+    let right = array.length - 1
 
-    for(let i=2; i < array.length; i++) {
-        auxSum = auxSum + array[i] - array[i - 2]
-        if(target == auxSum)
-            return true
+    while(left < right) {
+        let avg = (array[left] + array[right]) / 2
+        if(avg === target) return true
+        if(avg > target) right--
+        else left++
     }
 
     return false

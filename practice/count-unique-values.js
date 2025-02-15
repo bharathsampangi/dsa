@@ -10,13 +10,10 @@
 
 function countUniqueValuesWithOnePointer(arr) {
     let counter = 0
-    let prevElement
 
     for(let i=0; i < arr.length; i++) {
-        if(arr[i] != prevElement) {
+        if(arr[i] != arr[i-1])
             counter++
-        }
-        prevElement = arr[i]
     }
     return counter
 }

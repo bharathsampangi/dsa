@@ -4,22 +4,33 @@
 
 // Solve this with the following requirements:
 // Time Complexity - O(n log n)
-// Space Complexity - O(1)
+// Space Complexity - O(n)
+
+// const findPair = (arr, numsDiff) => {
+//     numsDiff = Math.abs(numsDiff)
+//     let map = {}
+
+//     for(let i=0; i<arr.length; i++) {
+//         let diff = Math.abs(numsDiff - arr[i])
+//         if(diff === 0)
+//             return true
+        
+//         let remainingDiff = Math.abs(numsDiff - arr[i])
+//         if(map[remainingDiff] || map[-remainingDiff]) {
+//             return true
+//         }
+//         map[arr[i]] = 1
+//     }
+
+//     return false
+// }
 
 const findPair = (arr, numsDiff) => {
-    numsDiff = Math.abs(numsDiff)
-    let map = {}
+    const obj = {}
 
-    for(let i=0; i<arr.length; i++) {
-        let diff = Math.abs(numsDiff - arr[i])
-        if(diff === 0)
-            return true
-        
-        let remainingDiff = Math.abs(numsDiff - arr[i])
-        if(map[remainingDiff] || map[-remainingDiff]) {
-            return true
-        }
-        map[arr[i]] = 1
+    for(let item of arr) {
+        if(obj[item + num] || obj[item - num]) return true
+        obj[item] = item
     }
 
     return false

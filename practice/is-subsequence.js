@@ -7,21 +7,18 @@
 // Time Complexity - O(N + M)
 // Space Complexity - O(1)
 
-function isSubsequence(str1, str2) {
+function isSubsequence(pattern, str) {
+    if(str.length < pattern.length) return false
     let i=0, j=0
 
-    while(i < str1.length && j < str2.length) {
-        if(str1[i] === str2[j]) {
+    while(i < pattern.length && j < str.length) {
+        if(pattern[i] === str[j]) {
             i++;
-            j++;
-        } else {
-            j++
         }
+        j++
     }
 
-    if(i === str1.length) return true
-
-    return false
+    return i === pattern.length
 }
 
 console.log(isSubsequence("sing", "sting")); // true

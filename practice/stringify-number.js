@@ -3,6 +3,18 @@
 // finds all of the values which are numbers and converts them to strings.
 // Recursion would be a great way to solve this!
 
+function stringifyNumbers(obj) {
+    for(let key in obj) {
+        if(typeof obj[key] === "object") {
+            stringifyNumbers(obj[key])
+        } else if(typeof obj[key] === "number"){
+            obj[key] = String(obj[key])
+        }
+    }
+
+    return obj
+}
+
 const obj = {
     num: 1,
     test: [],

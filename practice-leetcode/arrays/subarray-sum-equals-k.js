@@ -20,3 +20,37 @@
 // 1 <= nums.length <= 2 * 104
 // -1000 <= nums[i] <= 1000
 // -107 <= k <= 107
+
+var subarraySum = function(nums, k) {
+    let count = 0
+    let start = 0
+    let i=0
+    let sum = 0
+
+    while(sum < k && i < nums.length) {
+        sum = sum + nums[i]
+        i++
+    }
+
+    if(sum === k) {
+        count++
+    }
+
+    while(i < nums.length) {
+        if(sum == k) {
+            count++
+        }
+        if(sum >= k) {
+            sum = sum - nums[start]
+            start++
+        } else {
+            sum = sum + nums[i]
+            i++
+        }
+    }
+
+    return count
+};
+
+console.log(subarraySum([1,1,1], 2))
+console.log(subarraySum([1,2,3], 3))

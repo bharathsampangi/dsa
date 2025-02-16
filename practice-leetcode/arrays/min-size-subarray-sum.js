@@ -28,3 +28,36 @@
  
 
 // Follow up: If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log(n)).
+
+var minSubArrayLen = function(target, nums) {
+    let sum = 0
+    let minLength = 0
+
+    while(sum < target && minLength < nums.length) {
+        sum = sum + nums[minLength]
+        minLength++
+    }
+
+    if(sum < target) return 0
+
+    let tempLength = minLength
+    let i = 0
+
+    while(i + tempLength - 1 < nums.length) {
+        if(sum > target) {
+            sum = sum - nums[i]
+            tempLength--
+            minLength = Math.min(tempLength, minLength)
+            i++
+        } else {
+            sum = sum + nums[i + tempLength]
+            tempLength++
+        }
+    }
+
+    return minLength
+};
+
+console.log(minSubArrayLen(7, [2,3,1,2,4,3]))
+console.log(minSubArrayLen(4, [1, 4, 4]))
+console.log(minSubArrayLen(11, [1,1,1,1,1,1,1,1]))

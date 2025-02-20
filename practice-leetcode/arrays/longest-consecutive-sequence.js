@@ -20,3 +20,25 @@
 
 // 0 <= nums.length <= 105
 // -109 <= nums[i] <= 109
+
+var longestConsecutive = function(nums) {
+    nums.sort((a,b) => a - b)
+    console.log(nums)
+    let i = 1
+    let start = 0
+    let maxLen = -Infinity
+
+    while(i < nums.length) {
+        if(nums[i] - nums[i-1] === 1) {
+            maxLen= Math.max(maxLen, i - start + 1)
+        } else {
+            start++
+        }
+        i++
+    }
+
+    return maxLen
+};
+
+console.log(longestConsecutive([100,4,200,1,3,2]))
+console.log(longestConsecutive([0,3,7,2,5,8,4,6,0,1]))

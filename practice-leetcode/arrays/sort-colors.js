@@ -25,3 +25,20 @@
  
 
 // Follow up: Could you come up with a one-pass algorithm using only constant extra space?
+
+var sortColors = function(nums) {
+    let zero = 0, one = 0, two = 0
+
+    for(let i=0; i < nums.length; i++) {
+        if(nums[i] == 0)
+            zero++
+        else if(nums[i] == 1)
+            one++
+        else two++
+    }
+
+    return nums.fill(0, 0, zero).fill(1, zero, zero+one).fill(2, zero+one, zero+one+two)
+};
+
+console.log(sortColors([2,0,2,1,1,0]))
+console.log(sortColors([2,0,1]))

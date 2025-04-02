@@ -38,3 +38,65 @@
  
 
 // Follow-up: Can you implement the stack using only one queue?
+
+var MyStack = function() {
+    this.queue = []
+    this.temp = []
+    this.head = null
+};
+
+/** 
+ * @param {number} x
+ * @return {void}
+ */
+MyStack.prototype.push = function(x) {
+    this.queue.push(x)
+    this.head = x
+};
+
+/**
+ * @return {number}
+ */
+MyStack.prototype.pop = function() {
+    while(this.queue.length > 1) {
+        let currElem = this.queue.shift()
+        if(this.queue.length === 2)
+            this.head === currElem
+        this.temp.push(currElem)
+    }
+    let ele = this.queue.shift()
+    this.queue = this.temp
+    this.temp = []
+    return ele
+};
+
+/**
+ * @return {number}
+ */
+MyStack.prototype.top = function() {
+    return this.head
+};
+
+/**
+ * @return {boolean}
+ */
+MyStack.prototype.empty = function() {
+    return this.queue.length === 0
+};
+
+/** 
+ * Your MyStack object will be instantiated and called as such:
+ * var obj = new MyStack()
+ * obj.push(x)
+ * var param_2 = obj.pop()
+ * var param_3 = obj.top()
+ * var param_4 = obj.empty()
+ */
+
+var myStack = new MyStack();
+myStack.push(1);
+myStack.push(2);
+console.log(myStack.top()); // return 2
+console.log(myStack.pop()); // return 2
+console.log(myStack.empty()); // return False
+console.log(myStack.pop())

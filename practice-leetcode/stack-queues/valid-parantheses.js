@@ -38,3 +38,32 @@
 
 // 1 <= s.length <= 104
 // s consists of parentheses only '()[]{}'.
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+    const stack = []
+    const map = { '{': '}', '[': ']', '(': ')' }
+    const keys = Object.keys(map)
+
+    for(let char of s) {
+        if(!keys.includes(char)) {
+            let bkt = stack.pop()
+            if(map[bkt] !== char) {
+                return false
+            }
+        } else {
+            stack.push(char)
+        }
+    }
+
+    return stack.length === 0
+};
+
+console.log(isValid("()"))
+console.log(isValid("()[]{}"))
+console.log(isValid("(]"))
+console.log(isValid("([])"))
+console.log(isValid("({["))

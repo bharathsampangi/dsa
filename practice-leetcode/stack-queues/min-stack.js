@@ -10,7 +10,36 @@
 // int getMin() retrieves the minimum element in the stack.
 // You must implement a solution with O(1) time complexity for each function.
 
- 
+class MinStack {
+    constructor() {
+        this.minStack = [];
+        this.stack = [];
+    }
+    
+    push(val) {
+        let currMin = this.minStack[this.minStack.length - 1] || Infinity
+
+        if(val < currMin) {
+            this.minStack.push(val)
+        } else {
+            this.minStack.push(currMin)
+        }
+        this.stack.push(val)
+    }
+    
+    pop() {
+        this.stack.pop()
+        this.minStack.pop()
+    }
+    
+    top() {
+        return this.stack[this.stack.length - 1]
+    }
+    
+    getMin() {
+        return this.minStack[this.minStack.length - 1]
+    }
+}
 
 // Example 1:
 

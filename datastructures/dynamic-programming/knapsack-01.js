@@ -23,8 +23,7 @@ function compute(idx, W, weights, value, dp) {
         pick = value[idx] + compute(idx-1, W - weights[idx], weights, value, dp)
     }
 
-    dp[idx][W] = Math.max(pick, notPick)
-    return dp[idx][W]
+    return dp[idx][W] = Math.max(pick, notPick)
 }
 
 function knapsack(n, W, weights, value) {

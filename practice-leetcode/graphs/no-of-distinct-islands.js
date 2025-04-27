@@ -15,9 +15,6 @@ function dfs(row, col, matrix, visited, arr, row0, col0) {
     visited[row][col] = 1
     const m = matrix.length
     const n = matrix[0].length
-    if(row > 0 && col>0 && row < m && col < n && matrix[row][col] != 0) {
-        return;
-    }
 
     arr.push({x: row - row0, y: col - col0})
 

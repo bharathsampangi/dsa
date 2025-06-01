@@ -41,8 +41,6 @@ const flatten = (head) => {
         return head
     }
     mergeHead = flatten(head.next)
-    // console.log("merge", mergeHead)
-    // console.log("head", head)
     return mergeTwoSortedLL(head, mergeHead)
 }
 

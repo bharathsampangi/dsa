@@ -33,7 +33,6 @@ class LinkedList{
 
         let node = this.head
         while(node != null) {
-            console.log(node)
             if(node.val === prevVal) {
                 this.tail.next = node
                 break;
@@ -44,19 +43,28 @@ class LinkedList{
         return this
     }
 
-    detectCycle() {
+    findLengthOfCycle() {
         let slow = this.head
         let fast = this.head
 
-        while(fast != null && fast.next != null) {
+        while(fast.next != null) {
             fast = fast.next.next
             slow = slow.next
-
-            if(fast === slow)
-                return true
+            if(fast == slow)
+                break
         }
 
-        return false
+        if(fast.next == null) return 0
+
+        let count = 1
+        fast = fast.next
+        while(fast.next != null) {
+            fast = fast.next
+            count++
+            if(fast === slow) break
+        }
+
+        return count
     }
 }
 
@@ -67,4 +75,4 @@ ll.push(5)
 ll.push(7)
 ll.push(8)
 ll.addCycleNode(5, 4)
-console.log(ll.detectCycle())
+console.log(ll.findLengthOfCycle())

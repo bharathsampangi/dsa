@@ -25,29 +25,41 @@ class LinkedList{
         return this
     }
 
-    reverseLL() {
-        let node = this.head
-        this.head = this.tail
-        this.tail = node
-        let nextNode = null
-        let prevNode = null
+    deleteMiddle() {
+        let slow = this.head
+        let fast = this.head
+        let prevSlow = slow
 
-        while(node != null) {
-            nextNode = node.next
-            node.next = prevNode
-            prevNode = node
-            node = nextNode
+        while(fast.next != null) {
+            fast = fast.next.next
+            prevSlow = slow
+            slow = slow.next
         }
 
-        return this.head
+        prevSlow.next = prevSlow.next.next
+        return this
+    }
+
+    printLL() {
+        let node = this.head
+        console.log(node)
+        const arr = []
+
+        while(node != null) {
+            arr.push(node.val)
+            node = node.next
+            console.log(node)
+        }
+
+        console.log(arr)
     }
 }
 
 const ll = new LinkedList()
 ll.push(1)
-ll.push(2)
 ll.push(3)
-ll.push(4)
 ll.push(5)
-let node = ll.reverseLL()
-console.log(node)
+ll.push(7)
+ll.push(8)
+ll.deleteMiddle()
+ll.printLL()
